@@ -7,6 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.Dimension;
 
 import java.time.Duration;
 
@@ -19,7 +20,8 @@ public class LoginTests {
     @BeforeEach
     public void setUp() {
         driver = new ChromeDriver();
-        driver.manage().window().maximize();
+        // driver.manage().window().maximize(); // CDP не підтримується у Chrome 136
+        driver.manage().window().setSize(new Dimension(1280, 800)); // Альтернатива
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
 
