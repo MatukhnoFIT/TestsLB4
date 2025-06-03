@@ -20,7 +20,7 @@ public class LoginLogoutTests {
     public void setUp() {
         // Ініціалізація драйвера
         driver = new ChromeDriver();
-        driver.manage().window().maximize();
+        //    driver.manage().window().maximize();
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
 
