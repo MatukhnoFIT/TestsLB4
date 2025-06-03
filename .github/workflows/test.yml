@@ -1,0 +1,34 @@
+name: Run Selenium Tests
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Set up Chrome
+        uses: browser-actions/setup-chrome@v1
+
+      - name: Run Maven Tests
+        run: |
+          sudo apt update
+          sudo apt install -y xvfb
+          export DISPLAY=:99
+          Xvfb :99 &
+          
+          mvn test
